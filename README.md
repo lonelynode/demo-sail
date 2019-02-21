@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Framework7 Vue + Webpack App Template
 
 A full-featured Framework7 Vue with Webpack setup with hot-reload & css extraction. Based on [Vue Webpack Boilerplate](https://github.com/vuejs-templates/webpack)
@@ -89,3 +90,6 @@ npm run build-prod
 * `src/routes.js` - app routes
 * `src/app.vue` - main app structure/component
 * `/static/` - folder with extra static assets that will be copied into output folder
+=======
+# demo-sail
+>>>>>>> 1fb6c476dfe103217c4c665d7cea435ef971d7ca
