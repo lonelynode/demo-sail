@@ -1,0 +1,7 @@
+/* Your app styles here */
+:root {
+  --f7-theme-color: #573590;
+  --f7-theme-color-shade: #d60000;
+  --f7-theme-color-tint: #ff2929;
+  --f7-theme-color-rgb: 255, 0, 0;
+}
