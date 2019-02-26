@@ -2,7 +2,7 @@
   <f7-page id="sail" style="background: white;">
     <f7-navbar class="navbar-theme" style="background: white;">
       <f7-nav-left>
-        <f7-link panel-open="left">Back</f7-link>
+        <f7-link panel-open="left" icon-f7="chevron_left">Back</f7-link>
       </f7-nav-left>
       <f7-nav-title>Test Sail</f7-nav-title>
       <f7-nav-right>
@@ -211,8 +211,8 @@
                     <div class="col-15">
                       <div class="item-input">
                         <div class="item-inner">
-                          <div data-v-50803bf8="" class="item-title item-label input-title">
-                            <span data-v-50803bf8="">to</span>
+                          <div class="item-title item-label" style="font-size: 15px; color: #A4AAB3;">
+                            <p>to</p>
                           </div>
                         </div>
                       </div>
@@ -304,7 +304,7 @@
                       <div class="item-input">
                         <div class="item-inner">
                           <div class="item-input-wrap">
-                            <select @change="addTradeArray">
+                            <select @change="addTradeArray($event)">
                               <option :value="tradeInfo.code" v-for="(tradeInfo, index) in tradeList" :key="tradeInfo.code">{{ tradeInfo.value }}</option>
                             </select>
                           </div>
@@ -334,12 +334,16 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-10 op-icon">
+                      <f7-icon f7="add" size="25"></f7-icon>
+                      <!--<f7-icon icon="icon-add"></f7-icon>-->
+                    </div>
                   </div>
 
                 </div>
 
                 <div class="row" style="width: 100%; padding: 8px 0;" v-for="(trade, index) in tradeArray">
-                  <div class="col-30">
+                  <div class="col-25">
                     <div class="item-input">
                       <div class="item-inner">
                         <div class="item-input-wrap">
@@ -350,7 +354,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-30">
+                  <div class="col-25">
                     <div class="item-input">
                       <div class="item-inner">
                         <div class="item-input-wrap">
@@ -361,7 +365,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-30">
+                  <div class="col-25">
                     <div class="item-input">
                       <div class="item-inner">
                         <div class="item-input-wrap">
@@ -372,7 +376,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-5" @click="delTradeInfo(index)">del</div>
+                  <div class="col-10 op-icon" @click="delTradeInfo(index)">
+                    <f7-icon f7="close" size="25"></f7-icon>
+                    <!--<f7-icon icon="icon-add"></f7-icon>-->
+                  </div>
 
 
                 </div>
@@ -463,67 +470,77 @@
             <div class="row" style="padding: 0 30px;">
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Expected Vol:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Expected Vol:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col-70">
+                      <div class="item-input-wrap">
+                        <input type="number">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                    <div class="col-25">
+                      <div class="item-input-wrap">
+                        <select>
+                          <option>TEU/week</option>
+                          <option>TEU</option>
+                          <option>Total TEU</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Target MQC:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Target MQC:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col-70">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                    <div class="col-25">
+                      <div class="item-input-wrap">
+                        <input type="text" readonly value="p.a.">
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Customer Total Annual Vol.(All carriers):</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Customer Total Annual Vol.(All carriers):</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col-70">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                      <div class="col-25">
-                        <div class="item-input-wrap">
-                          <select >
-                            <option>TEU/week</option>
-                            <option>TEU</option>
-                            <option>Total TEU</option>
-                          </select>
-                        </div>
+                  <div class="row">
+                    <div class="col-70">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                    <div class="col-25">
+                      <div class="item-input-wrap">
+                        <input type="text" readonly value="Total TEU">
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -541,99 +558,104 @@
             <div class="row" style="padding: 0 30px;">
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Bid Required:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Bid Required:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                  </div>
 
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Competitors:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Competitors:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <textarea></textarea>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="item-input-wrap">
+                        <textarea></textarea>
                       </div>
                     </div>
+                  </div>
 
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>New Signed Contract/Agreement#:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>New Signed Contract/Agreement#:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                  </div>
 
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>New Signed Contact/Agreement's Effective Period:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>New Signed Contact/Agreement's Effective Period:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                  </div>
 
                 </div>
 
               </div>
               <div class="col scope-field">
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>New Signed Contract/Agreement's MQC:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>New Signed Contract/Agreement's MQC:</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                  <div class="row">
+                    <div class="col-70">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
                       </div>
                     </div>
+                    <div class="col-25">
+                      <div class="item-input-wrap">
+                        <input type="text" readonly value="p.a.">
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -652,152 +674,207 @@
               <div class="col scope-field">
 
                 <div class="row" style="width: 100%; padding: 8px 0;">
-
-                    <ul style="width: 100%; padding: 0;">
-                      <li style="padding: 0;" class="item-content item-input">
-                        <div class="item-inner">
-                          <div class="item-title item-label input-title">
-                            <span>Services:</span>
+                  <div v-for="(serviceItem, index) in servicesArray">
+                    <div class="row" style="width: 100%;">
+                      <div class="col-40">
+                        <div class="item-content item-input" style="padding: 0">
+                          <div class="item-inner">
+                            <div class="item-title item-label input-title">
+                              <span>Services:</span>
+                            </div>
+                            <div class="item-input-wrap">
+                              <input type="text" readonly v-model="serviceItem.serviceName">
+                            </div>
                           </div>
-                          <div class="item-input-wrap">
-                            <input id="autocomplete-dropdown" type="text" placeholder="Fruit">
-                            <span class="input-clear-button"></span>
+                        </div>
+                      </div>
+
+                      <div class="col-25">
+
+                        <div class="item-content item-input" style="padding: 0">
+                          <div class="item-inner">
+                            <div class="item-title item-label input-title">
+                              <span>Trade Lane:</span>
+                            </div>
+                            <div class="item-input-wrap">
+                              <input type="text">
+                              <span class="input-clear-button"></span>
+                            </div>
                           </div>
                         </div>
-                      </li>
-                    </ul>
+                      </div>
+                      <div class="col-25">
 
-                    <div class="row">
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
+                        <div class="item-content item-input" style="padding: 0">
+                          <div class="item-inner">
+                            <div class="item-title item-label input-title">
+                              <span>Vol(p.a.):</span>
+                            </div>
+                            <div class="item-input-wrap">
+                              <input type="text">
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
+                      <div class="col-10 op-icon" style="padding-top: 30px;" @click="delService(index)">
+                        <f7-icon f7="close"></f7-icon>
                       </div>
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-
                     </div>
-
-
-
-                </div>
-                <div class="row" style="width: 100%; padding: 8px 0;">
-
-                    <div class="row">
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
+                    <div v-for="(tradeSectorItem, tradeSectorItemIndex) in serviceItem.tradeSectorArray">
+                      <div class="row" style="">
+                        <div class="col-45">
+                          <div class="item-content item-input" style="padding: 0;">
+                            <div class=" item-inner">
+                              <div class="item-title item-label input-title">
+                                <span>Trade Sector:</span>
+                              </div>
+                              <div class="item-input-wrap">
+                                <input type="text" readonly v-model="tradeSectorItem.code">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-30">
+                          <div class="item-content item-input" style="padding: 0;">
+                            <div class="item-inner">
+                              <div class="item-title item-label input-title">
+                                <span>Ratio(%):</span>
+                              </div>
+                              <div class="item-input-wrap">
+                                <input type="text">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-10" style="padding-top: 40px;">
+                          <span>%</span>
+                        </div>
+                        <div class="col-10 op-icon" style="padding-top: 30px;" @click="delTradeSector(index, tradeSectorItemIndex)">
+                          <f7-icon f7="close"></f7-icon>
                         </div>
                       </div>
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                      <div class="col-30">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-
                     </div>
+                    <div class="row" style="">
+                      <div class="col-80">
+                        <div class="item-content item-input" style="padding: 0;">
+                          <div class="item-inner">
+                            <div class="item-title item-label input-title">
+                              <span>Trade Sector:</span>
+                            </div>
+                            <div class="item-input-wrap">
+                              <select @change="addTradeSector(index, $event)">
+                                <option :value="tradeSectorItem.code" v-for="tradeSectorItem in tradeSectorList">{{ tradeSectorItem.value }}</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-10 op-icon" style="padding-top: 30px;">
+                        <f7-icon f7="add"></f7-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <ul style="width: 100%; padding: 0;">
+                    <li style="padding: 0;" class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label input-title">
+                          <span>Services:</span>
+                        </div>
+                        <div class="item-input-wrap">
+                          <input id="autocomplete-dropdown" type="text" placeholder="Auto complete">
+                          <span class="input-clear-button"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
+
               </div>
               <div class="col scope-field">
 
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Total TPP Volume:</span>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Total TPP Volume:</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-75">
+                      <div class="item-input-wrap">
+                        <input type="text">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                    <div class="col-20">
+                      <div class="item-input-wrap">
+                        <input type="text" value="Any" readonly>
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-75">
-                        <div class="item-input-wrap">
-                          <input type="text">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                      <div class="col-20">
-                        <div class="item-input-wrap">
-                          <input type="text" value="Any">
-                        </div>
-                      </div>
-
-                    </div>
+                  </div>
                 </div>
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Total TPP Volume:</span>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Total TPP Volume:</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-75">
+                      <div class="item-input-wrap">
+                        <input type="text" @click="openPicker3">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                    <div class="col-20">
+                      <div class="item-input-wrap">
+                        <input type="text" value="TEU" readonly>
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-75">
-                        <div class="item-input-wrap">
-                          <input type="text" @click="openPicker3">
-                          <span class="input-clear-button"></span>
-                        </div>
-                      </div>
-                      <div class="col-20">
-                        <div class="item-input-wrap">
-                          <input type="text" value="TEU">
-                        </div>
-                      </div>
-
-                    </div>
-
-                </div>
-                <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Commodity</span>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <textarea></textarea>
-                        </div>
-                      </div>
-                    </div>
+                  </div>
 
                 </div>
                 <div class="row" style="width: 100%; padding: 8px 0;">
-                    <div class="row">
-                      <div class="item-title item-label input-title">
-                        <span>Size/Type:</span>
-                      </div>
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Commodity</span>
                     </div>
+                  </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <div class="item-input-wrap">
-                          <select @change="addSizeArray">
-                            <option v-for="item in sizeTypeList">{{ item }}</option>
-                          </select>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="item-input-wrap">
+                        <textarea></textarea>
                       </div>
                     </div>
+                  </div>
+
                 </div>
-                <div class="row"v-for="(sizeTypeInfo, index) in sizeTypeArray" style="width: 100%; padding: 8px 0;">
+                <div class="row" style="width: 100%; padding: 8px 0;">
+                  <div class="row">
+                    <div class="item-title item-label input-title">
+                      <span>Size/Type:</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-90">
+                      <div class="item-input-wrap">
+                        <select @change="addSizeArray($event)">
+                          <option v-for="item in sizeTypeList">{{ item }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-10 op-icon">
+                      <f7-icon f7="add" size="25"></f7-icon>
+                      <!--<f7-icon icon="icon-add"></f7-icon>-->
+                    </div>
+                  </div>
+                </div>
+                <div class="row" v-for="(sizeTypeInfo, index) in sizeTypeArray" style="width: 100%; padding: 8px 0;">
                   <div class="col-85">
                     <div class="item-input">
                       <div class="item-inner">
@@ -809,7 +886,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-5" @click="delSizeType(index)">del</div>
+                  <div class="col-10 op-icon" @click="delSizeType(index)">
+                    <f7-icon f7="close" size="25"></f7-icon>
+                  </div>
                 </div>
 
               </div>
@@ -898,842 +977,25 @@
                 </div>
               </div>
             </li>
+            <li class="item-content item-input">
+              <div style="color: #573590;">
+                <f7-icon f7="add"></f7-icon>
+                Add new Interaction
+              </div>
+            </li>
           </ul>
         </div>
         <div id="chartmain" style="width:40rem; height: 25rem;"></div>
       </div>
 
     </div>
-    <div class="system-status-div">
-    <div class="foot-note">
-      Last Modified 14/2/19 10:54 (UTC+8) by wongck | Created On 14/2/19 10:54 (UTC+8) by wongck
-    </div>
-  </div>
+    <!--<div class="system-status-div">-->
+    <!--<div class="foot-note">-->
+    <!--Last Modified 14/2/19 10:54 (UTC+8) by wongck | Created On 14/2/19 10:54 (UTC+8) by wongck-->
+    <!--</div>-->
+    <!--</div>-->
     <!--<div class="block block-strong no-padding no-margin margin-bottom">-->
     <!--<div id="demo-picker-date-container"></div>-->
-    <!--<div id="opportunity_detail_NewOppGen" class="generalDiv" style="display: none">
-      <div class="list"]>
-        <ul>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span class="">Carrier:</span>
-                <span class="asterisk">*</span>
-              </div>
-              <div class="item-input-wrap">
-                <select>
-                  <option :value="carrierInfo.code" v-for="(carrierInfo, index) in carrierList" :key="carrierInfo.code">{{ carrierInfo.value }}</option>
-                </select>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span>Sales:</span>
-                <span class="asterisk">*</span>
-              </div>
-              <div class="item-input-wrap">
-                <input type="text"  v-model="sail"  @click="popupOpened = true">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="row" style="width: 100%;">
-              <div class="col-65">
-                <div class="item-inner">
-                  <div class="item-title item-label input-title">
-                    <span>Customer:</span>
-                    <span class="asterisk">*</span>
-                  </div>
-                  <div class="item-input-wrap">
-                    <input type="text"  v-model="customer">
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-35">
-                <div class="item-inner">
-                  <div class="item-title item-label input-title">
-                    <span>&nbsp;</span>
-                  </div>
-                  <div class="item-input-wrap">
-                    <input type="text"  v-model="leadTrade">
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="row" style="width: 100%;">
-              <div class="col-45">
-                <div class="item-inner">
-                  <div class="item-title item-label input-title">
-                    <span>Lead Trade:</span>
-                  </div>
-                  <div class="item-input-wrap">
-                    <input type="text"  v-model="leadTrade">
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-45">
-                <div class="item-inner">
-                  <div class="item-title item-label input-title">
-                    <span>Lead Bound:</span>
-                  </div>
-                  <div class="item-input-wrap">
-                    <input type="text"  v-model="leadBouond">
-                    <span class="input-clear-button"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span>Customer Area:</span>
-              </div>
-              <div class="item-input-wrap">
-                <input type="text"  v-model="customerArea">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span>Contact Person:</span>
-              </div>
-              <div class="item-input-wrap">
-                <input type="text"  v-model="contactPerson">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li id="tpt">
-
-            <label class="item-checkbox item-content">
-              <input type="checkbox" name="demo-checkbox" value="Books" v-model="isTPTUser"/>
-              <i class="icon icon-checkbox"></i>
-              <div class="item-inner">
-                <div class="item-title">TPT EB ISC</div>
-              </div>
-            </label>
-          </li>
-          <li class="item-content item-input" style="margin-top: 10px;" v-show="isTPTUser">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span>Year:</span>
-                <span class="asterisk">*</span>
-              </div>
-              <div class="item-input-wrap">
-                <input type="text"  v-model="customer">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">URL</div>
-              <div class="item-input-wrap">
-                <input type="url" placeholder="URL">
-                <span class="input-clear-button"></span>
-              </div>
-            </div>
-          </li>
-          <li></li>
-        </ul>
-        <button class="button send-email">Send Email</button>
-      </div>
-    </div>
-    <div id="opportunity_detail_NewOppCus" class="ScopeDiv">
-      <div class="list">
-        <ul>
-          <li class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label input-title">
-                <span class="">Carrier:</span>
-                <span class="asterisk">*</span>
-              </div>
-              <div class="item-input-wrap">
-                <select>
-                  <option :value="carrierInfo.code" v-for="(carrierInfo, index) in carrierList" :key="carrierInfo.code">{{ carrierInfo.value }}</option>
-                </select>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div class="scope-block">
-          <ul>
-            <li class="item-content item-input">
-              <div class="item-inner gridHeader">
-                <div class="item-title item-label">
-                  <span class="" style="float: left; margin-right: 5px;">Opportunity Scope</span>
-                  <hr>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input">
-              <div class="item-inner">
-                <div class="row">
-                  <div class="col scope-field">
-
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Target Period:</span>
-                            <span class="asterisk">*</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-40">
-                            <div class="item-input-wrap">
-                              <input type="text"  @click="openPicker3"  id="period-from-date">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-15">to</div>
-                          <div class="col-40">
-                            <div class="item-input-wrap">
-                              <input type="text"  @click="openPicker2"  id="demo-picker-device">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Cargo Group</span>
-                            <span class="asterisk">*</span>
-                            <span>/Nature:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-40">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-40">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Biz Nature</span>
-                            <span class="asterisk">*</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-
-                  </div>
-                  <div class="col scope-field">
-
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Trade</span>
-                            <span class="asterisk">*</span>
-                            <span>/Lane/Bound:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-
-                        <div class="row">
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="scope-block">
-          <ul>
-            <li class="item-content item-input">
-              <div class="item-inner gridHeader">
-                <div class="item-title item-label">
-                  <span class="" style="float: left; margin-right: 5px;">Details</span>
-                  <hr>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input">
-              <div class="item-inner">
-                <div class="row">
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Status</span>
-                            <span class="asterisk">*</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Likelihood of Success:</span>
-                            <span class="asterisk">*</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Critial Success Factor:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input">
-              <div class="item-inner">
-                <div class="row">
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Expected Vol:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Target MQC:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Customer Total Annual Vol.(All carriers):</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="scope-block">
-          <ul>
-            <li class="item-content item-input">
-              <div class="item-inner gridHeader">
-                <div class="item-title item-label">
-                  <span class="" style="float: left; margin-right: 5px;">Agreement/Contract</span>
-                  <hr>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input">
-              <div class="item-inner">
-                <div class="row">
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Bid Required:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Competitors:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>New Signed Contract/Agreement#:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>New Signed Contact/Agreement's Effective Period:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                  <div class="col scope-field">
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>New Signed Contract/Agreement's MQC:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="scope-block">
-          <ul>
-            <li class="item-content item-input">
-              <div class="item-inner gridHeader">
-                <div class="item-title item-label">
-                  <span class="" style="float: left; margin-right: 5px;">References</span>
-                  <hr>
-                </div>
-              </div>
-            </li>
-            <li class="item-content item-input">
-              <div class="item-inner">
-                <div class="row">
-                  <div class="col scope-field">
-
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-
-                        <ul style="padding: 0;">
-                          <li style="padding: 0;" class="item-content item-input">
-                            <div class="item-inner">
-                              <div class="item-title item-label input-title">
-                                <span>Services:</span>
-                              </div>
-                              <div class="item-input-wrap">
-                                <input id="autocomplete-dropdown" type="text" placeholder="Fruit">
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-
-                        <div class="row">
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-
-                        <div class="row">
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-30">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                  </div>
-                  <div class="col scope-field">
-
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Total TPP Volume:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-75">
-                            <div class="item-input-wrap">
-                              <input type="text">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-20">
-                            <div class="item-input-wrap">
-                              <input type="text">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Total TPP Volume:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-75">
-                            <div class="item-input-wrap">
-                              <input type="text"  @click="openPicker3"  id="period-from-date">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                          <div class="col-20">
-                            <div class="item-input-wrap">
-                              <input type="text"  @click="openPicker2"  id="demo-picker-device">
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Commodity</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                    <div class="row" style="width: 100%;">
-                      <div class="item-inner">
-                        <div class="row">
-                          <div class="item-title item-label input-title">
-                            <span>Size/Type:</span>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col">
-                            <div class="item-input-wrap">
-                              <input type="text"  >
-                              <span class="input-clear-button"></span>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        &lt;!&ndash;<div class="block block-strong no-padding no-margin margin-bottom">&ndash;&gt;
-          &lt;!&ndash;<div id="demo-picker-date-container"></div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-
-      </div>
-    </div>-->
-
 
 
     <div class="customer-picker"
@@ -1809,8 +1071,14 @@
           {code: 'IET', value: 'IET'},
           {code: 'AUT', value: 'AUT'},
         ],
+        tradeSectorList: [
+          {code: 'CAEC', value: 'CAEC'},
+          {code: 'USEC', value: 'USEC'},
+          {code: 'USWC', value: 'USWC'},
+        ],
         sizeTypeArray: [],
         tradeArray: [],
+        servicesArray: [],
         sizeTypeList: [
           "20GP",
           "20FL",
@@ -1845,7 +1113,7 @@
       }
     },
     mounted: function () {
-      var fruits = ('Apple Apricot Avocado Banana Melon Orange Peach Pear Pineapple').split(' ');
+      var services = ('AAA1 AAA2 BBC1 BBC2 CCC1 CCC3 DDD2 DDD3').split(' ');
       var autocompleteDropdownSimple = this.$f7.autocomplete.create({
         inputEl: '#autocomplete-dropdown',
         openIn: 'dropdown',
@@ -1856,13 +1124,19 @@
             return;
           }
           // Find matched items
-          for (var i = 0; i < fruits.length; i++) {
-            if (fruits[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) {
-              results.push(fruits[i]);
+          for (var i = 0; i < services.length; i++) {
+            if (services[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+              results.push(services[i]);
             }
           }
           // Render items by passing array with result items
           render(results);
+        },
+        on: {
+          change: (values) => {
+            console.log(values)
+            this.autocompleteService(values[0])
+          }
         }
       });
     },
@@ -1877,13 +1151,12 @@
         // this.hideLoading()
         this.$$(selectedDiv).show()
         if (value === 'int') {
-          var echarts = require('../echarts.js')
-          let chartmain = document.getElementById('chartmain')
-          let myChart = echarts.init(document.getElementById('chartmain'));
-          console.log(myChart)
-
-          //使用制定的配置项和数据显示图表
-          myChart.setOption(this.option);
+          // var echarts = require('../echarts.js')
+          // let chartmain = document.getElementById('chartmain')
+          // let myChart = echarts.init(document.getElementById('chartmain'));
+          // console.log(myChart)
+          //
+          // myChart.setOption(this.option);
         }
       },
       popupClick: function () {
@@ -2019,24 +1292,45 @@
         });
         // pickerCustomToolbar.open()
       },
-      autocompleteService: function () {
-
+      autocompleteService: function (value) {
+        console.log(value)
+        this.servicesArray.push({
+          serviceName: value,
+          tradeSectorArray: [],
+        })
       },
-      addTradeArray: function () {
+      addTradeArray: function (event) {
+        console.log(event.target.value)
         this.tradeArray.push(
-          {trade: "Any", Bound: "Any", Lane: "Any"}
+          {trade: event.target.value, Bound: "Any", Lane: "Any"}
         )
       },
-      addSizeArray: function () {
+      addSizeArray: function (event) {
+        console.log(event.target.value)
         this.sizeTypeArray.push(
-          "20GP"
+          event.target.value
         )
       },
+      addTradeSector: function (index, event) {
+        console.log(event.target.value)
+        this.servicesArray[index].tradeSectorArray.push({
+          code: 'CAWC',
+          ratio: ''
+        })
+      },
+
       delTradeInfo: function (index) {
         this.tradeArray.splice(index, 1)
       },
-      delSizeType: function(index) {
+      delSizeType: function (index) {
         this.sizeTypeArray.splice(index, 1)
+      },
+      delService: function (index) {
+        this.servicesArray.splice(index, 1)
+      },
+      delTradeSector: function (serviceIndex, sectorIndex) {
+        console.log(serviceIndex, sectorIndex)
+        this.servicesArray[serviceIndex].tradeSectorArray.splice(sectorIndex, 1)
       },
 
       showLoading: function () {
@@ -2129,7 +1423,7 @@
     height: 0;
   }
 
-  .row {
+  .scope-field .row {
     width: 100%;
   }
 
@@ -2220,8 +1514,13 @@
   }
 
   .gridHeader hr {
-    padding-top: 11px;
+    padding-top: 9px;
     border: 0;
     border-bottom: 1px solid;
+  }
+
+  .op-icon {
+    padding-top: 9px;
+    color: #573590;
   }
 </style>
